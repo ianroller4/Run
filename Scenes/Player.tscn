@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://c865205npr7cq"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_ahrmo"]
+[ext_resource type="PackedScene" uid="uid://d3ea7hbekmv66" path="res://Scenes/PlayerHud.tscn" id="2_cuvl2"]
+[ext_resource type="Texture2D" uid="uid://ccylfatj0doob" path="res://Assets/Art/TempPlayer.png" id="2_qbvjt"]
+[ext_resource type="Texture2D" uid="uid://dodialpd3yylq" path="res://Assets/Art/Light.png" id="3_klhlj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g8lm5"]
+radius = 11.0454
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tsamk"]
+radius = 13.0
+
+[node name="Player" type="CharacterBody2D"]
+texture_filter = 1
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("1_ahrmo")
+
+[node name="Player Hud" parent="." instance=ExtResource("2_cuvl2")]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_qbvjt")
+
+[node name="PhysicsCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_g8lm5")
+
+[node name="Camera" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 1.25
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+texture = ExtResource("3_klhlj")
+texture_scale = 0.75
+
+[node name="InvincibleTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="DashReadyTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_tsamk")
+debug_color = Color(0.980392, 0, 0.392157, 0.419608)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="timeout" from="InvincibleTimer" to="." method="_on_invincible_timer_timeout"]
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="DashReadyTimer" to="." method="_on_dash_ready_timer_timeout"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
+[connection signal="body_exited" from="HitBox" to="." method="_on_hit_box_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

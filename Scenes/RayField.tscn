@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://by3roq53gqbg7"]
+
+[node name="Ray Field" type="Node2D"]
+
+[node name="N" type="RayCast2D" parent="."]
+rotation = -3.14159
+target_position = Vector2(0, 24)
+collision_mask = 9
+
+[node name="NE" type="RayCast2D" parent="."]
+rotation = -2.35619
+target_position = Vector2(0, 24)
+collision_mask = 9
+
+[node name="E" type="RayCast2D" parent="."]
+rotation = -1.5708
+target_position = Vector2(0, 24)
+collision_mask = 9
+
+[node name="SE" type="RayCast2D" parent="."]
+rotation = -0.785398
+target_position = Vector2(0, 24)
+collision_mask = 9
+
+[node name="S" type="RayCast2D" parent="."]
+target_position = Vector2(0, 24)
+collision_mask = 9
+
+[node name="SW" type="RayCast2D" parent="."]
+rotation = 0.785398
+target_position = Vector2(0, 24)
+collision_mask = 9
+
+[node name="W" type="RayCast2D" parent="."]
+rotation = 1.5708
+target_position = Vector2(0, 24)
+collision_mask = 9
+
+[node name="NW" type="RayCast2D" parent="."]
+rotation = 2.35619
+target_position = Vector2(0, 24)
+collision_mask = 9

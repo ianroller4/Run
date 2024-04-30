@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://d4eywly481a7t"]
+
+[ext_resource type="Script" path="res://Scripts/PauseMenu.gd" id="1_p42xf"]
+[ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_t0xvr"]
+[ext_resource type="Texture2D" uid="uid://w317jvbf8ayg" path="res://Assets/Art/Cursor.png" id="3_8ov5v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_r5v6e"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_dms3s"]
+font_size = 40
+
+[node name="Pause Menu" type="CanvasLayer"]
+script = ExtResource("1_p42xf")
+
+[node name="Menu" type="VBoxContainer" parent="." node_paths=PackedStringArray("ItemPointer")]
+anchors_preset = -1
+anchor_left = 0.719
+anchor_top = 0.642
+anchor_right = 0.852
+anchor_bottom = 0.818
+offset_left = -0.287964
+offset_top = -0.0160217
+offset_right = 0.495911
+offset_bottom = -0.0640259
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t0xvr")
+ItemPointer = NodePath("../Menu Pointer")
+
+[node name="Resume" type="Label" parent="Menu"]
+layout_mode = 2
+text = "Resume"
+label_settings = SubResource("LabelSettings_r5v6e")
+horizontal_alignment = 1
+
+[node name="Quit" type="Label" parent="Menu"]
+layout_mode = 2
+text = "Quit"
+label_settings = SubResource("LabelSettings_dms3s")
+horizontal_alignment = 1
+
+[node name="Menu Pointer" type="TextureRect" parent="."]
+anchors_preset = -1
+anchor_left = 0.656
+anchor_top = 0.651
+anchor_right = 0.699
+anchor_bottom = 0.728
+offset_left = -0.712036
+offset_top = 0.151978
+offset_right = -0.248108
+offset_bottom = 0.255951
+texture = ExtResource("3_8ov5v")
+expand_mode = 1
+
+[connection signal="Chosen" from="Menu" to="." method="_on_menu_chosen"]

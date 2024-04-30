@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3ea7hbekmv66"]
+
+[ext_resource type="Texture2D" uid="uid://o5ru4h8i08tu" path="res://Assets/Art/DashReady.png" id="1_anc3r"]
+[ext_resource type="Texture2D" uid="uid://bl5ly33t5edhd" path="res://Assets/Art/Health.png" id="2_hhlc7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yayrw"]
+font_size = 50
+
+[node name="Player Hud" type="CanvasLayer"]
+
+[node name="Dash Ready" type="TextureRect" parent="."]
+anchors_preset = -1
+anchor_left = 0.464
+anchor_top = 0.802
+anchor_right = 0.534
+anchor_bottom = 0.926
+offset_left = 0.471985
+offset_top = 0.303955
+offset_right = -0.16803
+offset_bottom = -0.0480347
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("1_anc3r")
+
+[node name="Health 1" type="TextureRect" parent="."]
+anchors_preset = -1
+anchor_left = 0.043
+anchor_top = 0.077
+anchor_right = 0.087
+anchor_bottom = 0.154
+offset_left = 0.463997
+offset_top = 0.103996
+offset_right = -0.224007
+offset_bottom = 0.207993
+texture = ExtResource("2_hhlc7")
+
+[node name="Health 2" type="TextureRect" parent="."]
+anchors_preset = -1
+anchor_left = 0.109
+anchor_top = 0.077
+anchor_right = 0.152
+anchor_bottom = 0.154
+offset_left = -0.568008
+offset_top = 0.103996
+offset_right = -0.104004
+offset_bottom = 0.207993
+texture = ExtResource("2_hhlc7")
+
+[node name="Health 3" type="TextureRect" parent="."]
+anchors_preset = -1
+anchor_left = 0.174
+anchor_top = 0.077
+anchor_right = 0.217
+anchor_bottom = 0.154
+offset_left = -0.448013
+offset_top = 0.103996
+offset_right = 0.0159912
+offset_bottom = 0.207993
+texture = ExtResource("2_hhlc7")
+
+[node name="Score" type="Label" parent="."]
+offset_left = 722.0
+offset_top = 30.0
+offset_right = 1115.0
+offset_bottom = 100.0
+text = "0"
+label_settings = SubResource("LabelSettings_yayrw")
+horizontal_alignment = 2
+vertical_alignment = 1

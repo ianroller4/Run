@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bo4ofvef5ksa3"]
+
+[ext_resource type="Script" path="res://Scripts/Ghost.gd" id="1_d32n7"]
+[ext_resource type="Texture2D" uid="uid://j8gceih1huju" path="res://Assets/Art/Slow.png" id="2_3wsyb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbysr"]
+size = Vector2(48, 48)
+
+[node name="Ghost" type="CharacterBody2D"]
+collision_layer = 16
+script = ExtResource("1_d32n7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_3wsyb")
+
+[node name="PhysicsCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tbysr")
+
+[node name="Navigation" type="NavigationAgent2D" parent="."]
+navigation_layers = 2
+
+[node name="NavTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="NavTimer" to="." method="_on_nav_timer_timeout"]

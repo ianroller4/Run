@@ -1,0 +1,100 @@
+[gd_scene load_steps=9 format=3 uid="uid://bt6fhql727n5c"]
+
+[ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_3s3ud"]
+[ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_4igyx"]
+[ext_resource type="Texture2D" uid="uid://w317jvbf8ayg" path="res://Assets/Art/Cursor.png" id="2_qpc51"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wn0l6"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_8c176"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_n5w6b"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_362by"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_rau0x"]
+font_size = 200
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3s3ud")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Menu Pointer" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = 756.0
+offset_top = 361.0
+offset_right = 806.0
+offset_bottom = 411.0
+texture = ExtResource("2_qpc51")
+expand_mode = 1
+
+[node name="Menu" type="VBoxContainer" parent="." node_paths=PackedStringArray("ItemPointer")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.719
+anchor_top = 0.551
+anchor_right = 1.0
+anchor_bottom = 0.909
+offset_left = -0.288025
+offset_top = -0.0480042
+offset_bottom = -0.0320435
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("1_4igyx")
+ItemPointer = NodePath("../Menu Pointer")
+
+[node name="Play" type="Label" parent="Menu"]
+layout_mode = 2
+text = "Play"
+label_settings = SubResource("LabelSettings_wn0l6")
+
+[node name="High Scores" type="Label" parent="Menu"]
+layout_mode = 2
+text = "High Scores"
+label_settings = SubResource("LabelSettings_8c176")
+
+[node name="Options" type="Label" parent="Menu"]
+layout_mode = 2
+text = "Options"
+label_settings = SubResource("LabelSettings_n5w6b")
+
+[node name="Quit" type="Label" parent="Menu"]
+layout_mode = 2
+text = "Quit"
+label_settings = SubResource("LabelSettings_362by")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.068
+anchor_top = 0.059
+anchor_right = 0.424
+anchor_bottom = 0.519
+offset_left = -0.336006
+offset_top = -0.232002
+offset_right = -0.448029
+offset_bottom = -0.312042
+grow_horizontal = 2
+grow_vertical = 2
+text = "Run"
+label_settings = SubResource("LabelSettings_rau0x")
+
+[connection signal="Chosen" from="Menu" to="." method="_on_menu_chosen"]
